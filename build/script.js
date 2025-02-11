@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function actualizarEstado() {
-    fetch("/.netlify/functions/api/estado")
+    fetch("/netlify/functions/api/estado")
         .then(response => response.json())
         .then(data => {
             document.getElementById("texto").value = data.texto;
@@ -14,12 +14,12 @@ function actualizarEstado() {
 }
 
 function buscar(query) {
-    fetch(`/.netlify/functions/api/buscar?query=${encodeURIComponent(query)}`)
+    fetch("/netlify/functions/api/buscar?query=${encodeURIComponent(query)}")
         .then(response => response.json())
         .then(() => actualizarEstado());
 }
 
 function borrarTexto() {
-    fetch("/.netlify/functions/api/borrar", { method: "POST" })
+    fetch("/netlify/functions/api/borrar", { method: "POST" })
         .then(() => actualizarEstado());
 }
