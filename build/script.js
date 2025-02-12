@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para actualizar el estado desde la API
     async function actualizarEstado() {
         try {
-            const response = await fetch(API_URL + "estado");
+            const response = await fetch(`${API_URL}estado:1`);
             if (!response.ok) throw new Error("No se pudo obtener el estado");
             
             const data = await response.json();
