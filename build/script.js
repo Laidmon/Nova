@@ -1,25 +1,20 @@
-const API_URL = "/api?query="; // Usa el redirect de Netlify
+const API_URL = "/api?query="; // Se usa el redirect de Netlify correctamente
 
 document.addEventListener("DOMContentLoaded", function () {
     const textarea = document.getElementById("texto");
     const borrarBtn = document.getElementById("borrar");
 
-    // Verificar si los elementos existen
-    if (!textarea) {
-        console.error("Error: No se encontró el elemento de texto.");
-        return;
-    }
-    if (!borrarBtn) {
-        console.error("Error: No se encontró el botón de borrar.");
+    if (!textarea || !borrarBtn) {
+        console.error("Error: Elementos del DOM no encontrados.");
         return;
     }
 
     // Función para actualizar el estado desde la API
     async function actualizarEstado() {
         try {
-            const response = await fetch(`${API_URL}estado:1`);
+            const response = await fetch(`${API_URL}estado`);
             if (!response.ok) throw new Error("No se pudo obtener el estado");
-            
+
             const data = await response.json();
             textarea.value = data.texto;
 
@@ -35,17 +30,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Definir la función borrarTexto correctamente
+    // Función para buscar y actualizar el estado
+    async function buscar(query) {
+        try {
+            await fetch(`${API_URL}${encodeURIComponent(query)}`);
+            actualizarEstado();
+        } catch (error) {
+            console.error("Error al buscar:", error);
+        }
+    }
+
+    // Función para borrar el texto (equivalente a escribir "")
     async function borrarTexto() {
         try {
-            await fetch(API_URL + "Escribir ");
+            await fetch(`${API_URL}Escribir `);
             actualizarEstado();
         } catch (error) {
             console.error("Error al borrar texto:", error);
         }
     }
 
-    // Asignar el evento al botón de borrar
+    // Asignar evento al botón de borrar
     borrarBtn.addEventListener("click", borrarTexto);
 
     setInterval(actualizarEstado, 3000); // Actualiza cada 3 segundos
