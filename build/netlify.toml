@@ -4,8 +4,9 @@
   node_version = "18"
   functions = "netlify/functions"
 
+
 [[redirects]]
-  force = true
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+  force = true
