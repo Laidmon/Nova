@@ -1,11 +1,17 @@
 {
-  "name": "mmo-chat-game",
+  "name": "biblioteca",
   "version": "1.0.0",
-  "description": "memorias de nova",
-  "main": "script.js",
+  "description": "Aplicación interactiva con API para búsquedas y manipulación de texto.",
   "scripts": {
-      "build": "echo 'No build step required'"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+  },
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }
