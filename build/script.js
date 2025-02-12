@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!response.ok) throw new Error("No se pudo obtener el estado");
 
             const data = await response.json();
-            textarea.value = data.texto;
+            textarea.textContent = data.texto;
 
             // Actualizar indicadores visuales
             ["escribir", "leer", "izquierda", "derecha", "adelante", "atras"].forEach(id => {
