@@ -1,17 +1,20 @@
-// script.js
-
 const API_URL = "/api?query="; // Usa el redirect de Netlify
 
-// Esperar a que el DOM esté completamente cargado antes de ejecutar el script
 document.addEventListener("DOMContentLoaded", function () {
     const textarea = document.getElementById("texto");
     const borrarBtn = document.getElementById("borrar");
-    
-    if (!textarea || !borrarBtn) {
-        console.error("Error: Elementos del DOM no encontrados.");
+
+    // Verificar si los elementos existen
+    if (!textarea) {
+        console.error("Error: No se encontró el elemento de texto.");
+        return;
+    }
+    if (!borrarBtn) {
+        console.error("Error: No se encontró el botón de borrar.");
         return;
     }
 
+    // Función para actualizar el estado desde la API
     async function actualizarEstado() {
         try {
             const response = await fetch(API_URL + "estado");
@@ -32,14 +35,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    borrarBtn.addEventListener("click", async () => {
+    // Definir la función borrarTexto correctamente
+    async function borrarTexto() {
         try {
             await fetch(API_URL + "Escribir ");
             actualizarEstado();
         } catch (error) {
             console.error("Error al borrar texto:", error);
         }
-    });
+    }
+
+    // Asignar el evento al botón de borrar
+    borrarBtn.addEventListener("click", borrarTexto);
 
     setInterval(actualizarEstado, 3000); // Actualiza cada 3 segundos
     actualizarEstado(); // Llamada inicial
