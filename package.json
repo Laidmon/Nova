@@ -1,0 +1,11 @@
+{
+  "name": "mmo-chat-game",
+  "version": "1.0.0",
+  "description": "memorias de nova",
+  "main": "script.js",
+  "scripts": {
+      "build": "echo 'No build step required'"
+  },
+  "author": "",
+  "license": "ISC"
+}
