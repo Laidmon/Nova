@@ -5,12 +5,6 @@
   "scripts": {
     "build": "parcel build index.html"
   },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "parcel": "^2.9.3"
-  },
-  "engines": {
-    "node": "18.20.6"
-  }
+  "author": "Tu Nombre",
+  "license": "MIT"
 }
