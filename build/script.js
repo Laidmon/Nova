@@ -1,4 +1,4 @@
-const API_URL = "https://novamemories.netlify.app/api?query="; // Se usa el redirect de Netlify correctamente
+const API_URL = "/api?query="; // Se usa el redirect de Netlify correctamente
 
 document.addEventListener("DOMContentLoaded", function () {
     const textarea = document.getElementById("texto");
