@@ -26,25 +26,3 @@
     </div>
 </body>
 </html>
-
-/* script.js */
-document.addEventListener("DOMContentLoaded", () => {
-    actualizarEstado();
-    setInterval(actualizarEstado, 3000);
-});
-
-function actualizarEstado() {
-    fetch("/.netlify/functions/api")
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("texto").value = data.texto;
-            for (const key in data.indicadores) {
-                document.getElementById(key).classList.toggle("activo", data.indicadores[key]);
-            }
-        });
-}
-
-function borrarTexto() {
-    fetch("/.netlify/functions/api?query=Escribir%20", { method: "GET" })
-        .then(() => actualizarEstado());
-}
