@@ -1,7 +1,7 @@
 const API_URL = "/api?query="; // Se usa el redirect de Netlify correctamente
 
 document.addEventListener("DOMContentLoaded", function () {
-    const textarea = document.getElementById("texto");
+    const textarea = document.getElementById("textIA");
     const borrarBtn = document.getElementById("borrar");
 
     if (!textarea || !borrarBtn) {
