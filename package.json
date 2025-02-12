@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Aplicación interactiva con API para búsquedas y manipulación de texto.",
   "scripts": {
-    "start": "parcel index.html",
     "build": "parcel build index.html"
   },
   "dependencies": {
